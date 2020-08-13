@@ -1,0 +1,14 @@
+$bgColor: red;
+
+container {
+    color: $bgColor;
+}
+
+stepper {
+    width: 100%;
+}
+
+step {
+    width: 100%;
+    padding: 16px 12px 16px 12px;
+}
