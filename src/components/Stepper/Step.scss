@@ -1,14 +1,69 @@
-@import 'StyleVars.scss';
+@import "StyleVars";
+@import "Stepper";
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+desk-h3 {
+    font: Roboto 18px medium;
+    color: $cl-neutral-5;
+}
+
+desk-body {
+    font: Roboto 16px;
+    color: $cl-neutral-5;
+}
 
 .step {
-    width: 100%;
-    padding: 16px 12px 16px 12px;
-    background-color: blue;
-}
+    padding: 16px;
+    display: flex;
+    flex: 1;
+    align-items: center;
 
-.number {
-    border: 2px solid $cl-primary;
-}
+    @include mobile {
+        flex-direction: row;
+    }
+    @include desktop {
+        flex-direction: column;
+    }
 
-// .step-label {
-// }
+    &-number {
+        &-visited {
+            border-radius: 50%;
+            background-color: $cl-primary;
+            color: $cl-white;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font: Roboto 12px medium;
+            // text-align: center;
+        }
+        &-activated {
+            @extend .step-number-visited;
+            box-shadow: 0, 0 6px $cl-primary 12%;
+        }
+        &-unvisited {
+            @extend .step-number-visited;
+            color: $cl-primary;
+            background-color: rgba(0, 0, 0, 0);
+            border: 2px solid $cl-primary-light;
+        }
+
+    }
+
+    &-label {
+        &-visited {
+           @extend desk-body;
+        }
+        &-activated {
+            @extend desk-h3;
+        }
+        &-unvisited {
+            // @extend .step-number-visited;
+            // color: $cl-primary;
+            // background-color: rgba(0, 0, 0, 0);
+            // border: 2px solid $cl-primary-light;
+        }
+    }
+}

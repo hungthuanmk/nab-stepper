@@ -1,21 +1,16 @@
+@import "StyleVars";
 
-cl-neutral-4 {
-    background: #bdbdbd;
-    opacity: 0.2;
-}
-
-
-
-.stepper {
-    width: 100%;
-}
-
-
-
-$phone-width: 768px;
+$mobile-width: 480px;
+$tablet-width: 768px;
 $desktop-width: 1024px;
+@mixin mobile {
+    @media (max-width: #{$mobile-width - 1px}) {
+        @content;
+    }
+}
+
 @mixin tablet {
-    @media (min-width: #{$phone-width}) and (max-width: #{$desktop-width - 1px}) {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
         @content;
     }
 }
@@ -23,5 +18,25 @@ $desktop-width: 1024px;
 @mixin desktop {
     @media (min-width: #{$desktop-width}) {
         @content;
+    }
+}
+
+cl-neutral-4 {
+    background: #bdbdbd;
+    opacity: 0.2;
+}
+
+.stepper {
+    display: flex;
+    width: 100%;
+    background-color: $cl-neural-3;
+
+    @include mobile {
+        // background-color: red;
+        flex-direction: column;
+    }
+    @include desktop {
+        // background-color: blue;
+        flex-direction: row;
     }
 }
