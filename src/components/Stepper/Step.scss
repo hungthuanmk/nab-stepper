@@ -33,6 +33,8 @@ desk-body {
     display: flex;
     flex: 1;
     align-items: center;
+    cursor: pointer;
+    // background-color: rgba(0, 255, 255, 0.1);
 
     &:hover {
         background-color: $cl-black8;
@@ -41,13 +43,17 @@ desk-body {
 
     @include mobile {
         flex-direction: row;
+        // width: 100%;
+        // height: 100%;
     }
     @include desktop {
         flex-direction: column;
+        height: 100%;
     }
 
     &-number {
         &-visited {
+            margin: auto;
             border-radius: 50%;
             background-color: $cl-primary;
             color: $cl-white;
@@ -74,7 +80,6 @@ desk-body {
         }
     }
 
-    
     &-label {
         &-common {
             text-align: center;
@@ -95,7 +100,6 @@ desk-body {
             @extend .step-label-common;
             @extend desk-h3-font;
             @extend desk-h3-color;
-            
         }
         &-unvisited {
             @extend .step-label-common;
@@ -105,5 +109,50 @@ desk-body {
             // background-color: rgba(0, 0, 0, 0);
             // border: 2px solid $cl-primary-light;
         }
+    }
+}
+
+.number-area {
+    // background-color: rgba(0, 255, 0, 0.1);
+    display: flex;
+    align-items: center;
+
+    @include mobile {
+        height: 120%;
+        width: 30px;
+        flex-direction: column;
+    }
+    @include desktop {
+        height: 30px;
+        width: 120%;
+        flex-direction: row;
+    }
+}
+
+.number-area-line {
+    // color: black;
+    @include mobile {
+        width: 2px;
+        height: 50%;
+    }
+    @include desktop {
+        width: 50%;
+        height: 2px;
+    }
+
+    &-bold {
+        background-color: $cl-primary;
+        @include mobile {
+            width: 4px;
+        }
+        @include desktop {
+            height: 4px;
+        }
+    }
+    &-visible {
+        background-color: $cl-primary-light;
+    }
+    &-hidden {
+        background-color: none;
     }
 }

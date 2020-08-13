@@ -5,7 +5,7 @@ import { Stepper, Step } from "./components/Stepper/Stepper";
 function App() {
     const [currentStepKey, setStepKey] = useState("a");
     return (
-        <div className="App">
+        <div className="App" style={{width: "100vw", height: "100vh"}}>
             <Stepper
                 activeStepKey={currentStepKey}
                 onOrderChange={(newStepKey) => setStepKey(newStepKey)}

@@ -21,15 +21,34 @@ class Step extends Component {
     getStyle = (className) => this.styleMap[this.props.state][className];
 
     render() {
+        let lineBeforeStyle = this.props.start
+            ? "number-area-line-hidden"
+            : "number-area-line-visible";
+        let lineAfterStyle = this.props.end
+            ? "number-area-line-hidden"
+            : "number-area-line-visible";
+
+        if (this.props.state === "visited") {
+            lineBeforeStyle = this.props.start === false ? "number-area-line-bold" : "";
+            lineAfterStyle = "number-area-line-bold";
+        }
+        if (this.props.state === "activated" && this.props.start === false)
+            lineBeforeStyle = "number-area-line-bold";
+
         return (
             <div
                 className="step"
                 onClick={() => this.props.onStepClick(this.props.activateKey)}
             >
                 {/* number */}
-                <div className={this.getStyle("number")}>
-                    {this.props._number}
+                <div className="number-area">
+                    <div className={`number-area-line ${lineBeforeStyle}`} />
+                    <div className={this.getStyle("number")}>
+                        {this.props._number}
+                    </div>
+                    <div className={`number-area-line ${lineAfterStyle}`} />
                 </div>
+
                 {/* text */}
                 <div className={this.getStyle("label")}>{this.props.title}</div>
             </div>
@@ -70,6 +89,8 @@ class Stepper extends Component {
                             idx,
                             this.state.activeStepKey
                         ),
+                        start: (idx === 0),
+                        end: (idx === this.props.children.length - 1),
                     })
                 )}
             </div>
