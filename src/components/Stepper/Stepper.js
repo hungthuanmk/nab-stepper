@@ -6,10 +6,6 @@ import "./Stepper.scss";
 import "./Step.scss";
 
 class Step extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
     styleMap = {
         unvisited: {
             number: "step-number-unvisited",
@@ -24,14 +20,11 @@ class Step extends Component {
 
     getStyle = (className) => this.styleMap[this.props.state][className];
 
-    // onStepClick = (number) =>
-    //     this.props.onStepClickHandler(number);
-
     render() {
         return (
             <div
                 className="step"
-                onClick={() => this.props.onStepClick(this.props._number)}
+                onClick={() => this.props.onStepClick(this.props.activateKey)}
             >
                 {/* number */}
                 <div className={this.getStyle("number")}>
@@ -47,31 +40,47 @@ class Step extends Component {
 class Stepper extends Component {
     constructor(props) {
         super(props);
-        this.props.children.map((step, idx) =>
-            React.cloneElement(step, { _number: idx + 1 })
-        );
+        this.state = {
+            activeStepKey: this.props.activeStepKey,
+        };
+
+        this.stepsManager = new Map();
+        this.props.children.forEach((step) => {
+            this.stepsManager.set(step.props.activateKey, step);
+        });
     }
 
-    onStepClickHandler = (stepNumber) => {
-        console.log(`Step ${stepNumber} clicked!`);
+    getActiveState = (idx, key) => {
+        let stepKeys = Array.from(this.stepsManager.keys());
+        let foundIdx = stepKeys.indexOf(key);
+        if (idx < foundIdx) return "visited";
+        if (idx === foundIdx) return "activated";
+        else return "unvisited";
     };
 
     render() {
         return (
             <div className="stepper">
-                {/* {this.props.children} */}
                 {this.props.children.map((step, idx) =>
                     React.cloneElement(step, {
                         _number: idx + 1,
-                        onStepClick: this.onStepClickHandler,
-                        state: "visited",
+                        key: idx,
+                        onStepClick: this.props.onOrderChange,
+                        state: this.getActiveState(
+                            idx,
+                            this.state.activeStepKey
+                        ),
                     })
                 )}
             </div>
         );
     }
 
-    // static getDerivedStateFromProps(props, state) {}
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
+            activeStepKey: nextProps.activeStepKey,
+        };
+    }
 }
 
 Step.propTypes = {

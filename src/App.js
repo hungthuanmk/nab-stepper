@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Stepper, Step } from "./components/Stepper/Stepper";
 
 function App() {
+    const [currentStepKey, setStepKey] = useState("a");
     return (
         <div className="App">
-            <Stepper activeStepKey={1}>
-              <Step activateKey={1} title="Supplier"/>
-              <Step activateKey={2} title="Basic Infomation"/>
-              <Step activateKey={3} title="Language"/>
+            <Stepper
+                activeStepKey={currentStepKey}
+                onOrderChange={(newStepKey) => {
+                    console.log(newStepKey);
+                    setStepKey(newStepKey);
+                }}
+            >
+                <Step activateKey={"a"} title="Supplier" />
+                <Step activateKey={"b"} title="Basic Infomation" />
+                <Step activateKey={"c"} title="Language" />
+                <Step activateKey={"d"} title="About" />
             </Stepper>
         </div>
     );
