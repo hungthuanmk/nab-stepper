@@ -8,10 +8,7 @@ function App() {
         <div className="App">
             <Stepper
                 activeStepKey={currentStepKey}
-                onOrderChange={(newStepKey) => {
-                    console.log(newStepKey);
-                    setStepKey(newStepKey);
-                }}
+                onOrderChange={(newStepKey) => setStepKey(newStepKey)}
             >
                 <Step activateKey={"a"} title="Supplier" />
                 <Step activateKey={"b"} title="Basic Infomation" />

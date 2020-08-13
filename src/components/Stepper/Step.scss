@@ -23,7 +23,9 @@ desk-body {
         // font-weight: 500;
     }
 
-    color: $cl-neutral-5;
+    &-color {
+        color: $cl-neutral-5;
+    }
 }
 
 .step {
@@ -74,7 +76,8 @@ desk-body {
 
     
     &-label {
-        &-margin {
+        &-common {
+            text-align: center;
             @include mobile {
                 margin-left: 10px;
             }
@@ -84,16 +87,18 @@ desk-body {
         }
 
         &-visited {
-            @extend .step-label-margin;
+            @extend .step-label-common;
             @extend desk-body-font;
+            @extend desk-body-color;
         }
         &-activated {
-            @extend .step-label-margin;
+            @extend .step-label-common;
             @extend desk-h3-font;
+            @extend desk-h3-color;
             
         }
         &-unvisited {
-            @extend .step-label-margin;
+            @extend .step-label-common;
             // @extend desk-h3-font;
             // @extend .step-number-visited;
             // color: $cl-primary;
