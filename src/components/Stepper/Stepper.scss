@@ -1,14 +1,27 @@
-$bgColor: red;
 
-container {
-    color: $bgColor;
+cl-neutral-4 {
+    background: #bdbdbd;
+    opacity: 0.2;
 }
 
-stepper {
+
+
+.stepper {
     width: 100%;
 }
 
-step {
-    width: 100%;
-    padding: 16px 12px 16px 12px;
+
+
+$phone-width: 768px;
+$desktop-width: 1024px;
+@mixin tablet {
+    @media (min-width: #{$phone-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
 }

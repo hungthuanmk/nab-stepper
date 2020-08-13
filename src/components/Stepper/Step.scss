@@ -1,0 +1,14 @@
+@import 'StyleVars.scss';
+
+.step {
+    width: 100%;
+    padding: 16px 12px 16px 12px;
+    background-color: blue;
+}
+
+.number {
+    border: 2px solid $cl-primary;
+}
+
+// .step-label {
+// }

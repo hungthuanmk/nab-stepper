@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import "./Stepper.scss";
+import "./Step.scss";
 
 class Step extends Component {
     constructor(props) {
@@ -10,25 +11,51 @@ class Step extends Component {
     }
 
     render() {
-        return <></>;
+        return (
+            <div className="step" onClick={()=>console.log("Hello")}>
+                {/* number */}
+                <div> 
+
+                </div>
+                {/* text */}
+                <div>
+                    {this.props.title}
+                </div>
+            </div>
+        );
     }
 }
 
 class Stepper extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
-        return <div className="container">This is a stepper</div>;
+        return (
+            <div className="stepper">
+                {this.props.children.map((step) => (
+                    step
+                ))}
+            </div>
+        );
+    }
+
+    static getDerivedStateFromProps(props, state) {
+
     }
 }
 
-Stepper.PropTypes = {
-    children: PropTypes.arrayOf(PropTypes.instanceOf(Stepper)).isRequired,
-    activeStepKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+Step.propTypes = {
+    title: PropTypes.node.isRequired,
+    activateKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
+
+Stepper.propTypes = {
+    children: PropTypes.arrayOf(PropTypes.node).isRequired,
+    activeStepKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onOrderChange: PropTypes.func.isRequired,
-    directory: PropTypes.oneOf(["VERTICAL", "HORIZONTAL"])
-}
+    directory: PropTypes.oneOf(["VERTICAL", "HORIZONTAL"]),
+};
 
 export { Step, Stepper };
