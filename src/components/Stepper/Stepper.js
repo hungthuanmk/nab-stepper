@@ -40,16 +40,19 @@ class Step extends Component {
                 className="step"
                 onClick={() => this.props.onStepClick(this.props.activateKey)}
             >
-                {/* number */}
-                <div className="number-area">
+                {/* number-section */}
+                <div className="number-area" style={this.props.style}>
+                    {/* tail-before */}
                     <div className={`number-area-line ${lineBeforeStyle}`} />
+                    {/* number-circle */}
                     <div className={this.getStyle("number")}>
                         {this.props._number}
                     </div>
+                    {/* tail-after */}
                     <div className={`number-area-line ${lineAfterStyle}`} />
                 </div>
 
-                {/* text */}
+                {/* title */}
                 <div className={this.getStyle("label")}>{this.props.title}</div>
             </div>
         );
@@ -59,10 +62,7 @@ class Step extends Component {
 class Stepper extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            activeStepKey: this.props.activeStepKey,
-        };
-
+    
         this.stepsManager = new Map();
         this.props.children.forEach((step) => {
             this.stepsManager.set(step.props.activateKey, step);
@@ -87,7 +87,7 @@ class Stepper extends Component {
                         onStepClick: this.props.onOrderChange,
                         state: this.getActiveState(
                             idx,
-                            this.state.activeStepKey
+                            this.props.activeStepKey
                         ),
                         start: (idx === 0),
                         end: (idx === this.props.children.length - 1),
@@ -95,12 +95,6 @@ class Stepper extends Component {
                 )}
             </div>
         );
-    }
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        return {
-            activeStepKey: nextProps.activeStepKey,
-        };
     }
 }
 
@@ -114,7 +108,7 @@ Stepper.propTypes = {
     children: PropTypes.arrayOf(PropTypes.node).isRequired,
     activeStepKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onOrderChange: PropTypes.func.isRequired,
-    directory: PropTypes.oneOf(["VERTICAL", "HORIZONTAL"]),
+    // directory: PropTypes.oneOf(["VERTICAL", "HORIZONTAL"]), 
 };
 
 export { Step, Stepper };

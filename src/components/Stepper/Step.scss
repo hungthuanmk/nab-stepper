@@ -1,11 +1,11 @@
 @import "StyleVars";
 @import "Stepper";
 
-@import url('http://fonts.googleapis.com/css?family=Roboto');
+@import url("http://fonts.googleapis.com/css?family=Roboto");
 
 desk-h3 {
     &-font {
-        font-family: 'Roboto';
+        font-family: "Roboto";
         font-size: 18px;
         font-weight: 500;
     }
@@ -84,6 +84,11 @@ desk-body {
     &-label {
         &-common {
             text-align: center;
+            user-select: none; /* supported by Chrome and Opera */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
             @include mobile {
                 margin-left: 10px;
             }
@@ -129,10 +134,10 @@ desk-body {
     // color: black;
     @include mobile {
         width: 2px;
-        height: calc(50% - 12px);
+        height: calc(50% - 10px);
     }
     @include desktop {
-        width: calc(50% - 12px);
+        width: calc(50% - 10px);
         height: 2px;
     }
 
