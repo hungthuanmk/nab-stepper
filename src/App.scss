@@ -1,0 +1,31 @@
+$mobile-width: 480px;
+// $tablet-width: 768px;
+// $desktop-width: 1024px;
+@mixin mobile {
+    @media (min-width: 0) and (max-width: #{$mobile-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$mobile-width}) {
+        @content;
+    }
+}
+
+.stepper-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+
+    .stepper {
+        @include mobile {
+            height: 100%;
+        }
+        @include desktop {
+            width: 100%;
+        }
+    }
+}

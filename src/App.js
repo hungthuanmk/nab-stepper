@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 
-import { Stepper, Step } from "./components/Stepper/Stepper";
+import { Stepper, Step } from "./components/Stepper";
+
+import "./App.scss";
 
 function App() {
     const [currentStepKey, setStepKey] = useState("a");
     return (
-        <div className="App" style={{width: "100vw", height: "100vh"}}>
+        <div className="stepper-container">
             <Stepper
+                className="stepper"
                 activeStepKey={currentStepKey}
                 onOrderChange={(newStepKey) => setStepKey(newStepKey)}
             >

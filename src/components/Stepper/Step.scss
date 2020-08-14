@@ -19,7 +19,7 @@ desk-body {
     &-font {
         font-family: Roboto;
         font-size: 16px;
-        font-style: regular;
+        font-style: normal;
         // font-weight: 500;
     }
 
@@ -63,10 +63,11 @@ desk-body {
             display: flex;
             justify-content: center;
             align-items: center;
-            font: Roboto 12px medium;
+            // font: Roboto 12px medium;
+            
             font-family: Roboto;
             font-size: 16px;
-            color: $cl-white;
+            // color: $cl-white;
             // text-align: center;
         }
         &-activated {
@@ -144,10 +145,10 @@ desk-body {
     &-bold {
         background-color: $cl-primary;
         @include mobile {
-            width: 4px;
+            width: 2px;
         }
         @include desktop {
-            height: 4px;
+            height: 2px;
         }
     }
     &-visible {
