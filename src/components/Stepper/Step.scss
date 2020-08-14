@@ -1,11 +1,11 @@
 @import "StyleVars";
 @import "Stepper";
 
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url('http://fonts.googleapis.com/css?family=Roboto');
 
 desk-h3 {
     &-font {
-        font-family: Roboto;
+        font-family: 'Roboto';
         font-size: 18px;
         font-weight: 500;
     }
@@ -36,6 +36,7 @@ desk-body {
     cursor: pointer;
     // background-color: rgba(0, 255, 255, 0.1);
 
+    transition-duration: 300ms;
     &:hover {
         background-color: $cl-black8;
         border-radius: 4px;
@@ -103,11 +104,6 @@ desk-body {
         }
         &-unvisited {
             @extend .step-label-common;
-            // @extend desk-h3-font;
-            // @extend .step-number-visited;
-            // color: $cl-primary;
-            // background-color: rgba(0, 0, 0, 0);
-            // border: 2px solid $cl-primary-light;
         }
     }
 }
@@ -118,13 +114,13 @@ desk-body {
     align-items: center;
 
     @include mobile {
-        height: 120%;
+        height: calc(100% + 32px);
         width: 30px;
         flex-direction: column;
     }
     @include desktop {
         height: 30px;
-        width: 120%;
+        width: calc(100% + 32px);
         flex-direction: row;
     }
 }
@@ -133,10 +129,10 @@ desk-body {
     // color: black;
     @include mobile {
         width: 2px;
-        height: 50%;
+        height: calc(50% - 12px);
     }
     @include desktop {
-        width: 50%;
+        width: calc(50% - 12px);
         height: 2px;
     }
 

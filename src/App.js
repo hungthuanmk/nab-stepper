@@ -14,6 +14,8 @@ function App() {
                 <Step activateKey={"b"} title="Basic Infomation" />
                 <Step activateKey={"c"} title="Language" />
                 <Step activateKey={"d"} title="About" />
+                <Step activateKey={"e"} title="Lorem ipsum" />
+                <Step activateKey={"f"} title="Some dumb text" />
             </Stepper>
         </div>
     );
